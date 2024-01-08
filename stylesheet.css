@@ -133,3 +133,24 @@ h2 {
 span.highlight {
   background-color: #ffffd0;
 }
+
+.email-icon {
+  color: #000000; /* Black for email icon */
+  margin-right: 5px;
+}
+
+.cv-icon {
+  color: #4a4a4a; /* Dark grey for CV icon */
+  margin-right: 5px;
+}
+
+.twitter-icon {
+  color: #1DA1F2; /* Twitter's brand color */
+  margin-right: 5px;
+}
+
+.github-icon {
+  color: #181717; /* GitHub's brand color */
+  margin-right: 5px;
+}
+
