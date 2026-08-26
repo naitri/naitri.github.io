@@ -7,6 +7,8 @@ home_title: PolarDepth at NYU Vision Day
 home_summary: NYC Computer Vision Day at NYU, 27 April 2026.
 title: PolarDepth presented at NYU Vision Day
 detail_kicker: Poster · NYC Computer Vision Day, NYU · 27 April 2026
+image: /images/news/nyu-vision-day.svg
+image_alt: Placeholder graphic for NYU Vision Day, the NYC Computer Vision Day
 links:
   - label: Event
     url: https://cs.nyu.edu/~fouhey/NYCVision2026/
