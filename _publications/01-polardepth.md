@@ -16,7 +16,7 @@ venues:
 links:
   - label: Paper
     url: https://ieeexplore.ieee.org/abstract/document/11488501
-  - label: Project
+  - label: Website
     url: https://prg.cs.umd.edu/PolarDepth
   - label: Video
     url: https://www.youtube.com/watch?v=O_d9X8CW1WQ

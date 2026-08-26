@@ -18,7 +18,7 @@ links:
     url: https://ieeexplore.ieee.org/document/10564186
   - label: arXiv
     url: https://arxiv.org/abs/2407.18240
-  - label: Project
+  - label: Website
     url: https://prg.cs.umd.edu/CodedVO
 authors_html: "<strong>Naitri Rajyaguru*</strong>, Sachin Shah*, Chahat Deep Singh, Christopher Metzler, Yiannis Aloimonos <span class='equal-note'>* equal contribution</span>"
 summary: A coded aperture physically encodes metric depth cues into images to resolve scale ambiguity in monocular visual odometry.

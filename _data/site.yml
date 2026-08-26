@@ -1,6 +1,6 @@
 name: Naitri Rajyaguru
 initials: NR
-meta_description: Naitri Rajyaguru. Robotics, computer vision, and insect-inspired autonomy for resource-constrained robots.
+meta_description: Naitri Rajyaguru builds insect-inspired AI for tiny robots. Ph.D. candidate in Computer Science at the University of Maryland, working on minimal perception, robot navigation, and computer vision for resource-constrained aerial robots.
 tagline: Insect-inspired AI for tiny robots.
 eyebrow: Robotics · Insect-Inspired AI · Computer Vision
 bio: >-
@@ -14,6 +14,7 @@ portrait_alt: Naitri Rajyaguru
 # sets no third-party cookies. script.js only downloads it on wide screens with
 # motion enabled; everywhere else the poster still is shown instead.
 hero_video_mp4: /video/hero-flapper.mp4
+hero_video_mp4_small: /video/hero-flapper-sm.mp4
 hero_poster: /images/hero-poster.jpg
 hero_video_alt: Simulated bee-eye view of flight through a meadow, and flapping-wing flight in the lab
 research_title: Smaller models for smaller robots.
@@ -48,7 +49,7 @@ sections:
     eyebrow: Research output
     title: Publications
   experience:
-    eyebrow: Experience
+    eyebrow: Roles
     title: Experience
   projects:
     eyebrow: Portfolio

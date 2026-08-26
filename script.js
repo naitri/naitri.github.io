@@ -80,10 +80,12 @@ if ('IntersectionObserver' in window) {
   const video = document.getElementById('hero-video');
   if (!video || !video.dataset.mp4) return;
   const saveData = navigator.connection && navigator.connection.saveData;
-  if (reduceMotion || saveData || window.innerWidth < 700) return;
+  if (reduceMotion || saveData) return;
 
+  // Phones get a smaller cut of the same clip rather than no clip at all.
+  const narrow = window.matchMedia('(max-width: 760px)').matches;
   const source = document.createElement('source');
-  source.src = video.dataset.mp4;
+  source.src = (narrow && video.dataset.mp4Small) ? video.dataset.mp4Small : video.dataset.mp4;
   source.type = 'video/mp4';
   video.appendChild(source);
   video.load();
@@ -326,6 +328,59 @@ document.querySelectorAll('.experience-logo img').forEach((img) => {
 });
 
 
+// Homepage news strip: a very slow drift that reverses at each end. It stops on
+// hover, focus, touch, or manual scrolling, and while the strip is off screen.
+(() => {
+  const strip = document.getElementById('news-strip');
+  if (!strip || reduceMotion) return;
+
+  const SPEED = 9;                 // px per second
+  let direction = 1, paused = false, onScreen = false, last = 0, raf = 0;
+  // scrollLeft floors to whole pixels, so a 0.45px step would be thrown away on
+  // every frame. Keep the true position here and write the accumulated value.
+  let pos = strip.scrollLeft;
+
+  const step = (now) => {
+    if (!last) last = now;
+    const dt = Math.min((now - last) / 1000, .05);
+    last = now;
+    if (!paused && onScreen) {
+      const max = strip.scrollWidth - strip.clientWidth;
+      if (max > 4) {
+        pos += direction * SPEED * dt;
+        if (pos >= max) { pos = max; direction = -1; }
+        else if (pos <= 0) { pos = 0; direction = 1; }
+        strip.scrollLeft = pos;
+      }
+    }
+    raf = requestAnimationFrame(step);
+  };
+
+  const hold = () => { paused = true; };
+  const release = () => { pos = strip.scrollLeft; last = 0; paused = false; };
+  ['pointerenter', 'pointerdown', 'focusin', 'touchstart'].forEach((e) =>
+    strip.addEventListener(e, hold, { passive: true }));
+  ['pointerleave', 'focusout', 'touchend', 'touchcancel'].forEach((e) =>
+    strip.addEventListener(e, release, { passive: true }));
+
+  // A manual scroll or an arrow-button click hands control back to the reader
+  // for a while, instead of fighting them for the scroll position.
+  let idle = 0;
+  strip.addEventListener('wheel', () => {
+    paused = true; clearTimeout(idle); idle = setTimeout(release, 2500);
+  }, { passive: true });
+  document.querySelectorAll('[data-news-scroll]').forEach((b) => b.addEventListener('click', () => {
+    paused = true; clearTimeout(idle); idle = setTimeout(release, 2500);
+  }));
+
+  if ('IntersectionObserver' in window) {
+    new IntersectionObserver((entries) => { onScreen = entries.some((e) => e.isIntersecting); },
+      { threshold: .15 }).observe(strip);
+  } else { onScreen = true; }
+
+  raf = requestAnimationFrame(step);
+})();
+
 // Homepage news strip controls. The strip remains swipe/trackpad scrollable without JavaScript.
 const newsStrip = document.getElementById('news-strip');
 document.querySelectorAll('[data-news-scroll]').forEach((button) => {
@@ -528,4 +583,63 @@ document.querySelectorAll('[data-news-scroll]').forEach((button) => {
       if (running) raf = requestAnimationFrame(animate); else cancelAnimationFrame(raf);
     }, { rootMargin: '120px 0px' }).observe(host);
   }
+})();
+
+// The brand mark doubles as a "you are here" indicator: it holds the initials at
+// the top of the page and expands into the name of whichever section is in view.
+(() => {
+  const brand = document.querySelector('.brand');
+  const mark = document.querySelector('.brand-mark');
+  if (!brand || !mark) return;
+
+  const initials = mark.dataset.brandDefault || mark.textContent.trim();
+  const navLinks = Array.from(document.querySelectorAll('.nav a'));
+
+  // On the News and Teaching pages the answer is fixed.
+  if (brand.dataset.brandPage) {
+    mark.textContent = brand.dataset.brandPage;
+    brand.classList.add('is-section');
+    return;
+  }
+
+  const SECTIONS = [
+    ['research', 'Research'],
+    ['publications', 'Publications'],
+    ['news', 'News'],
+    ['experience', 'Experience'],
+    ['projects', 'Projects']
+  ].map(([id, label]) => ({ el: document.getElementById(id), label, id }))
+   .filter((s) => s.el);
+  if (!SECTIONS.length) return;
+
+  let current = '';
+  const apply = (label, id) => {
+    if (label === current) return;
+    current = label;
+    mark.textContent = label || initials;
+    brand.classList.toggle('is-section', Boolean(label));
+    navLinks.forEach((a) => {
+      const href = a.getAttribute('href') || '';
+      a.classList.toggle('active', Boolean(id) && href.endsWith('#' + id));
+    });
+  };
+
+  const pick = () => {
+    // Whichever section covers the point just below the fixed header wins.
+    const line = 90;
+    let found = null;
+    SECTIONS.forEach((s) => {
+      const r = s.el.getBoundingClientRect();
+      if (r.top <= line && r.bottom > line) found = s;
+    });
+    apply(found ? found.label : '', found ? found.id : '');
+  };
+
+  let ticking = false;
+  window.addEventListener('scroll', () => {
+    if (ticking) return;
+    ticking = true;
+    requestAnimationFrame(() => { pick(); ticking = false; });
+  }, { passive: true });
+  pick();
 })();

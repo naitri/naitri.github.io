@@ -1,5 +1,5 @@
-title: Naitri Rajyaguru | Robotics & Computer Vision
-description: Naitri Rajyaguru. Robotics, computer vision, and insect-inspired autonomy for resource-constrained robots.
+title: Naitri Rajyaguru | Insect-Inspired AI for Tiny Robots
+description: Naitri Rajyaguru builds insect-inspired AI for tiny robots. Ph.D. candidate in Computer Science at the University of Maryland.
 url: https://naitri.github.io
 baseurl: ""
 markdown: kramdown
@@ -22,6 +22,7 @@ defaults:
     values:
       layout: default
 exclude:
+  - publish.sh
   - README.md
   - EDITING.md
   - UPLOAD-CHECKLIST.md

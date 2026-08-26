@@ -24,9 +24,75 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Source+Serif+4:opsz,wght@8..60,500;8..60,600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="{{ '/styles.css' | relative_url }}">
+
+{%- assign page_url = page.url | default: '/' | absolute_url -%}
+{%- assign page_title = page.title | default: site.title -%}
+{%- assign page_desc = page.description | default: site.data.site.meta_description -%}
+<link rel="canonical" href="{{ page_url }}">
+<meta name="author" content="{{ site.data.site.name }}">
+<meta name="robots" content="index,follow,max-image-preview:large">
+
+<meta property="og:type" content="{% if page.nav_active %}article{% else %}profile{% endif %}">
+<meta property="og:site_name" content="{{ site.data.site.name }}">
+<meta property="og:title" content="{{ page_title | escape }}">
+<meta property="og:description" content="{{ page_desc | escape }}">
+<meta property="og:url" content="{{ page_url }}">
+<meta property="og:image" content="{{ '/images/og-card.jpg' | absolute_url }}">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="{{ page_title | escape }}">
+<meta name="twitter:description" content="{{ page_desc | escape }}">
+<meta name="twitter:image" content="{{ '/images/og-card.jpg' | absolute_url }}">
+
+{%- comment -%}
+Structured data. This is what lets a search engine treat the site as one
+person-entity rather than a bag of pages, and it is where the research topics
+are stated explicitly.
+{%- endcomment -%}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "{{ site.data.site.name }}",
+  "url": "{{ '/' | absolute_url }}",
+  "image": "{{ '/images/og-card.jpg' | absolute_url }}",
+  "jobTitle": "Ph.D. Candidate in Computer Science",
+  "description": {{ site.data.site.meta_description | jsonify }},
+  "affiliation": {
+    "@type": "CollegeOrUniversity",
+    "name": "University of Maryland, College Park",
+    "url": "https://umd.edu/"
+  },
+  "alumniOf": [
+    { "@type": "CollegeOrUniversity", "name": "University of Maryland, College Park" },
+    { "@type": "CollegeOrUniversity", "name": "Gujarat Technological University" }
+  ],
+  "knowsAbout": [
+    "Insect-inspired AI",
+    "Tiny robots",
+    "Insect-scale autonomy",
+    "Minimal perception",
+    "Robot navigation",
+    "Computer vision",
+    "Computational imaging",
+    "Visual odometry",
+    "Bio-inspired robotics",
+    "Efficient AI",
+    "Micro aerial vehicles"
+  ],
+  "sameAs": [
+    "{{ site.data.site.links.github }}",
+    "{{ site.data.site.links.linkedin }}",
+    "{{ site.data.site.links.x }}",
+    "{{ site.data.site.links.scholar }}"
+  ]
+}
+</script>
 </head>
 <body{% if page.body_class %} class="{{ page.body_class }}"{% endif %}>
 <a class="skip-link" href="#main">Skip to content</a>
+<span id="top" aria-hidden="true"></span>
 {% include header.html %}
 <main id="main">
 {{ content }}
