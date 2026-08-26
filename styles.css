@@ -1008,14 +1008,16 @@ body{overflow-x:clip;max-width:100vw}
    needed a "Zupt." prefix to say which card it belonged to. In the card the
    prefix is redundant and nothing orphans.
    ========================================================================== */
-.experience-detail{
+/* Must out-specify `.experience-icon-card p` (0,1,1), which sets weight 600 and
+   a larger size for the organisation line. A bare `.experience-detail` (0,1,0)
+   loses to it no matter where it sits in the file. */
+.experience-icon-card .experience-detail{
   margin:12px 0 0;padding:11px 0 0;border-top:1px solid var(--line);
-  font-size:12.5px;line-height:1.55;color:var(--muted);
-  font-weight:400;          /* the card's <p> rule sets 600 for the organisation */
+  font-size:11.5px;line-height:1.55;color:var(--muted);font-weight:400;
 }
 .experience-icon-card{display:flex;flex-direction:column}
 .experience-icon-card .experience-detail{margin-top:auto}
-@media(max-width:700px){.experience-detail{font-size:12px}}
+@media(max-width:700px){.experience-icon-card .experience-detail{font-size:11px}}
 
 /* A news entry may carry no photo. Collapse the media row rather than leaving
    an empty band where the image would have been. */
