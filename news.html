@@ -1,0 +1,35 @@
+---
+title: News | Naitri Rajyaguru
+description: News, talks, recognition, and research updates from Naitri Rajyaguru.
+body_class: news-page
+header_light: true
+nav_active: news
+---
+<section class="news-hero">
+  <div class="container reveal">
+    <p class="eyebrow">News &amp; media</p>
+    <h1>News &amp; media.</h1>
+    <p>Papers, talks, posters, media coverage, and awards, most recent first.</p>
+  </div>
+</section>
+
+<section class="news-archive">
+  <div class="container">
+    {% assign ordered_news = site.news | sort: 'order' %}
+    {% assign current_year = '' %}
+    {% for item in ordered_news %}
+      {% if item.year != current_year %}
+        {% unless forloop.first %}</div></div>{% endunless %}
+        <div class="news-year-group">
+          <div class="news-year"><h2>{{ item.year }}</h2></div>
+          <div class="news-detail-list">
+        {% assign current_year = item.year %}
+      {% endif %}
+      <article class="news-detail-card reveal" id="{{ item.anchor }}">
+        <div class="news-detail-media"><img src="{{ item.image }}" alt="{{ item.image_alt }}"></div>
+        <div class="news-detail-copy"><span class="signal-kicker">{{ item.detail_kicker | default: item.kicker }}</span><h3>{{ item.title }}</h3>{{ item.content }}{% if item.links %}<div class="news-detail-links">{% for link in item.links %}<a href="{{ link.url }}">{{ link.label }} ↗</a>{% endfor %}</div>{% endif %}</div>
+      </article>
+      {% if forloop.last %}</div></div>{% endif %}
+    {% endfor %}
+  </div>
+</section>

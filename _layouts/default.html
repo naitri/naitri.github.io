@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#06101d">
+<script>
+/* Resolve the colour scheme before first paint so the page never flashes the wrong theme. */
+(function(){try{
+  var stored=localStorage.getItem('theme');
+  var preferred={{ site.data.site.default_theme | default: 'system' | jsonify }};
+  var mode=(stored==='light'||stored==='dark')?stored:preferred;
+  if(mode!=='light'&&mode!=='dark'){mode=window.matchMedia('(prefers-color-scheme: light)').matches?'light':'dark';}
+  document.documentElement.setAttribute('data-theme',mode);
+  document.documentElement.style.colorScheme=mode;
+  var m=document.querySelector('meta[name="theme-color"]');
+  if(m)m.setAttribute('content',mode==='dark'?'#06101d':'#f6f7f9');
+}catch(e){document.documentElement.setAttribute('data-theme','dark');}})();
+</script>
+<meta name="description" content="{{ page.description | default: site.data.site.meta_description | escape }}">
+<title>{{ page.title | default: site.title }}</title>
+<link rel="icon" href="{{ '/images/favicon/favicon.png' | relative_url }}" type="image/png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Source+Serif+4:opsz,wght@8..60,500;8..60,600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="{{ '/styles.css' | relative_url }}">
+</head>
+<body{% if page.body_class %} class="{{ page.body_class }}"{% endif %}>
+<a class="skip-link" href="#main">Skip to content</a>
+{% include header.html %}
+<main id="main">
+{{ content }}
+</main>
+{% include footer.html %}
+<script src="{{ '/script.js' | relative_url }}"></script>
+</body>
+</html>

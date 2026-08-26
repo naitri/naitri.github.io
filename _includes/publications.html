@@ -1,0 +1,25 @@
+<section class="section publications" id="publications" aria-labelledby="publications-title">
+  <div class="container">
+    <div class="compact-heading reveal"><div><p class="eyebrow dark">{{ site.data.site.sections.publications.eyebrow }}</p><h2 id="publications-title">{{ site.data.site.sections.publications.title }}</h2></div><a class="text-link dark-link" href="{{ site.data.site.links.scholar }}">Google Scholar ↗</a></div>
+    <div class="publication-list">
+      {% assign publications = site.publications | sort: 'order' %}
+      {% for pub in publications %}
+      <article class="publication-row reveal">
+        <a class="publication-media" href="{{ pub.media_link }}" aria-label="{{ pub.media_aria }}">
+          <img src="{{ pub.image }}" alt="{{ pub.image_alt }}">
+          {% if pub.play %}<span class="media-play" aria-hidden="true">▶</span>{% endif %}
+        </a>
+        <div class="publication-info">
+          <h3><a href="{{ pub.project_url }}">{{ pub.title }}</a></h3>
+          <div class="pub-status-row" aria-label="{{ pub.short_name }} venue and links">
+            {% for venue in pub.venues %}<span class="pub-venue{% if venue.accent %} accent{% endif %}">{{ venue.label }}</span>{% endfor %}
+            {% for link in pub.links %}<a href="{{ link.url }}">{{ link.label }} ↗</a>{% endfor %}
+          </div>
+          <p class="authors">{{ pub.authors_html }}</p>
+          <p class="pub-summary">{{ pub.summary }}</p>
+        </div>
+      </article>
+      {% endfor %}
+    </div>
+  </div>
+</section>

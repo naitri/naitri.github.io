@@ -1,0 +1,185 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#06101d">
+<script>
+/* Resolve the colour scheme before first paint so the page never flashes the wrong theme. */
+(function(){try{
+  var stored=localStorage.getItem('theme');
+  var preferred="system";
+  var mode=(stored==='light'||stored==='dark')?stored:preferred;
+  if(mode!=='light'&&mode!=='dark'){mode=window.matchMedia('(prefers-color-scheme: light)').matches?'light':'dark';}
+  document.documentElement.setAttribute('data-theme',mode);
+  document.documentElement.style.colorScheme=mode;
+  var m=document.querySelector('meta[name="theme-color"]');
+  if(m)m.setAttribute('content',mode==='dark'?'#06101d':'#f6f7f9');
+}catch(e){document.documentElement.setAttribute('data-theme','dark');}})();
+</script>
+<meta name="description" content="News, talks, recognition, and research updates from Naitri Rajyaguru.">
+<title>News | Naitri Rajyaguru</title>
+<link rel="icon" href="images/favicon/favicon.png" type="image/png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Source+Serif+4:opsz,wght@8..60,500;8..60,600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body class="news-page">
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header teaching-header" id="top">
+  <div class="nav-wrap">
+    <a class="brand" href="preview-local.html" aria-label="Naitri Rajyaguru home">NR</a>
+    <nav class="nav" aria-label="Primary navigation">
+      <a href="preview-local.html#research">Research</a>
+      <a href="preview-local.html#publications">Publications</a>
+      <a class="active" href="preview-news.html">News</a>
+      <a href="preview-local.html#experience">Experience</a>
+      <a href="preview-teaching.html">Teaching</a>
+    </nav>
+    <div class="nav-end">
+      <button class="theme-toggle" id="theme-toggle" type="button" role="switch" aria-checked="false" aria-label="Switch between dark and light mode" title="Switch between dark and light mode">
+  <span class="theme-toggle-track" aria-hidden="true">
+    <svg class="theme-icon theme-icon-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.4v2.3M12 19.3v2.3M4.2 12H1.9M22.1 12h-2.3M6.5 6.5 4.9 4.9M19.1 19.1l-1.6-1.6M17.5 6.5l1.6-1.6M4.9 19.1l1.6-1.6"/></svg>
+    <svg class="theme-icon theme-icon-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20.5 14.3A8.6 8.6 0 0 1 9.7 3.5a8.6 8.6 0 1 0 10.8 10.8Z"/></svg>
+    <span class="theme-toggle-thumb"></span>
+  </span>
+</button>
+
+      <a class="nav-cta" href="data/Naitri_Rajyaguru_CV.pdf">CV ↗</a>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+<section class="news-hero">
+  <div class="container reveal">
+    <p class="eyebrow">News &amp; media</p>
+    <h1>News &amp; media.</h1>
+    <p>Papers, talks, posters, media coverage, and awards, most recent first.</p>
+  </div>
+</section>
+
+<section class="news-archive">
+  <div class="container">
+    
+    
+    
+      
+        
+        <div class="news-year-group">
+          <div class="news-year"><h2>2026</h2></div>
+          <div class="news-detail-list">
+        
+      
+      <article class="news-detail-card reveal" id="iros-insect-workshop">
+        <div class="news-detail-media"><img src="images/news/iros-insect-workshop.jpg" alt="Insects and insect-scale robots flying and crawling among leaves, from the workshop banner"></div>
+        <div class="news-detail-copy"><span class="signal-kicker">Workshop · IROS 2026, Pittsburgh · 1 October 2026</span><h3>Co-organizing the Insect-scale Autonomy workshop at IROS 2026</h3><p>Co-organizing the Insect-scale Autonomy workshop at IROS 2026 in Pittsburgh. The workshop looks at how reliable autonomy can be achieved on severely resource-constrained platforms, where perception, mechanics, computation, and control all have to fit within insect-scale limits.</p><div class="news-detail-links"><a href="https://insect-autonomy.github.io/">Workshop site ↗</a></div></div>
+      </article>
+      
+    
+      
+      <article class="news-detail-card reveal" id="telluride">
+        <div class="news-detail-media"><img src="images/news/telluride-talk.jpg" alt="Naitri Rajyaguru presenting "What is a Robot?" at the Telluride Neuromorphic AI Workshop"></div>
+        <div class="news-detail-copy"><span class="signal-kicker">Research talk · Telluride Neuromorphic AI Workshop · Jun–Jul 2026</span><h3>Talk on Insect-Inspired AI</h3><p>Presented work on insect-inspired AI at the 2026 Telluride Neuromorphic AI Workshop, held June 28 – July 17 in Telluride, Colorado, and contributed to several of the workshop project groups.</p><div class="news-detail-links"><a href="https://sites.google.com/view/telluride-2026/home">Workshop ↗</a></div></div>
+      </article>
+      
+    
+      
+      <article class="news-detail-card reveal" id="cgtn">
+        <div class="news-detail-media"><img src="images/news/cgtn-feature.jpg" alt="Naitri Rajyaguru being interviewed for the CGTN America feature on insect-inspired AI"></div>
+        <div class="news-detail-copy"><span class="signal-kicker">Media feature · CGTN America · 4 July 2026</span><h3>Insects inspire smarter AI</h3><p>CGTN America ran a feature on insect-inspired AI and autonomous robots at UMD, covering navigation, communication, and camera stabilization for small aerial robots.</p><div class="news-detail-links"><a href="https://newsus.cgtn.com/news/2026-07-04/Insects-inspire-smarter-AI-1OuBXMbG0vu/index.html">CGTN America ↗</a><a href="https://www.linkedin.com/posts/university-of-maryland-institute-for-advanced-computer-studies_insects-inspire-smarter-ai-activity-7479993604191547392-sp6c">UMIACS feature ↗</a></div></div>
+      </article>
+      
+    
+      
+      <article class="news-detail-card reveal" id="polardepth">
+        <div class="news-detail-media"><img src="images/research/polardepth-banner.jpg" alt="PolarDepth comparison showing RGB, monocular depth, PolarDepth, and Polar-RGB"></div>
+        <div class="news-detail-copy"><span class="signal-kicker">Paper accepted · IEEE RA-L · IROS 2026 · June 2026</span><h3>PolarDepth accepted to IEEE RA-L</h3><p>PolarDepth was accepted to IEEE Robotics and Automation Letters and is scheduled for presentation at IROS 2026. It uses a single polarization camera to recover depth around transparent and reflective surfaces, where RGB and active depth sensors typically fail.</p><div class="news-detail-links"><a href="https://ieeexplore.ieee.org/abstract/document/11488501">Paper ↗</a><a href="https://prg.cs.umd.edu/PolarDepth">Project ↗</a><a href="https://www.linkedin.com/posts/naitri-rajyaguru_iros2026-robotics-computervision-activity-7473142329193820160-jTM2">Announcement ↗</a></div></div>
+      </article>
+      
+    
+      
+      <article class="news-detail-card reveal" id="outstanding-achievement">
+        <div class="news-detail-media"><img src="images/news/outstanding-achievement.jpg" alt="Certificate of Outstanding Achievement presented to Naitri Amit Rajyaguru by the UMD Department of Computer Science"></div>
+        <div class="news-detail-copy"><span class="signal-kicker">Award · UMD Department of Computer Science · 2025–2026</span><h3>Outstanding Achievement Award</h3><p>Received a Certificate of Outstanding Achievement from the UMD Department of Computer Science for the 2025–2026 academic year.</p></div>
+      </article>
+      
+    
+      
+      <article class="news-detail-card reveal" id="aim-symposium">
+        <div class="news-detail-media"><img src="images/news/aim-symposium.svg" alt="Placeholder graphic for the inaugural AIM Research and Learning Symposium"></div>
+        <div class="news-detail-copy"><span class="signal-kicker">Poster · Inaugural AIM Research & Learning Symposium · 5 May 2026</span><h3>Insect-inspired AI at the inaugural AIM Symposium</h3><p>The insect-inspired AI framework was selected for the poster session at the inaugural AIM Research & Learning Symposium, held by the Artificial Intelligence Interdisciplinary Institute at Maryland in the Stamp Student Union.</p><div class="news-detail-links"><a href="https://aim.umd.edu/news-events/events/research-learning-symposium">Symposium ↗</a><a href="https://today.umd.edu/briefs/inaugural-aim-symposium-highlights-ai-research-and-learning-innovation-at-umd">Maryland Today ↗</a></div></div>
+      </article>
+      
+    
+      
+      <article class="news-detail-card reveal" id="nyu-vision-day">
+        <div class="news-detail-media"><img src="images/news/poster-polardepth.jpg" alt="Naitri Rajyaguru beside the Purposive Perception poster featuring PolarDepth"></div>
+        <div class="news-detail-copy"><span class="signal-kicker">Poster · NYC Computer Vision Day, NYU · 27 April 2026</span><h3>PolarDepth at NYC Computer Vision Day</h3><p>Presented a PolarDepth poster at NYC Computer Vision Day, hosted at New York University on 27 April 2026.</p><div class="news-detail-links"><a href="https://cs.nyu.edu/~fouhey/NYCVision2026/">Event ↗</a></div></div>
+      </article>
+      
+    
+      
+      <article class="news-detail-card reveal" id="maryland-day">
+        <div class="news-detail-media"><img src="images/news/maryland-day.jpg" alt="Perception and Robotics Group drone demonstration table at Maryland Day 2026"></div>
+        <div class="news-detail-copy"><span class="signal-kicker">Outreach · Maryland Day · 25 April 2026</span><h3>Robotics outreach at Maryland Day</h3><p>Ran drone demonstrations with the Perception and Robotics Group and the Maryland Robotics Center at Maryland Day 2026, UMD's campus-wide open house.</p><div class="news-detail-links"><a href="https://marylandday.umd.edu/">Maryland Day ↗</a></div></div>
+      </article>
+      
+    
+      
+      <article class="news-detail-card reveal" id="princeton-symposium">
+        <div class="news-detail-media"><img src="images/news/poster-polardepth.jpg" alt="Naitri Rajyaguru beside the Purposive Perception poster at the Princeton Robotics Symposium"></div>
+        <div class="news-detail-copy"><span class="signal-kicker">Poster · Princeton Robotics Inaugural Symposium · 20 April 2026</span><h3>Purposive Perception at the Princeton Robotics Symposium</h3><p>Presented the poster "Purposive Perception: Task Aware Sensing for Robot Navigation" at the inaugural Princeton Robotics Symposium, covering coded-aperture visual odometry and PolarDepth as routes to metric depth from a single camera.</p><div class="news-detail-links"><a href="https://robotics.princeton.edu/events/2026/princeton-robotics-inaugural-symposium">Symposium ↗</a></div></div>
+      </article>
+      
+    
+      
+        </div></div>
+        <div class="news-year-group">
+          <div class="news-year"><h2>2025</h2></div>
+          <div class="news-detail-list">
+        
+      
+      <article class="news-detail-card reveal" id="ai-demo-day">
+        <div class="news-detail-media"><img src="images/news/ai-demo-day.jpg" alt="Palm-sized Crazyflie drone held in one hand at the UMD AI Demo Day"></div>
+        <div class="news-detail-copy"><span class="signal-kicker">Research showcase · UMD AI Demo Day · 16 October 2025</span><h3>Bio-inspired drones at UMD AI Demo Day</h3><p>Co-presented bio-inspired aerial robotics at UMD's AI Demo Day: camera stabilization for flapping-wing Flapper drones and autonomous obstacle navigation on palm-sized Crazyflie platforms. The Baltimore Sun covered the showcase.</p><div class="news-detail-links"><a href="https://research.umd.edu/news/umd-hosts-media-day-showcase-ai-innovation">UMD feature ↗</a><a href="https://www.baltimoresun.com/2025/10/16/ai-robots-rescue/">Baltimore Sun ↗</a><a href="https://www.baltimoresun.com/2025/10/17/honeybee-drone-ai/">Baltimore Sun · honeybee drones ↗</a></div></div>
+      </article>
+      
+    
+      
+      <article class="news-detail-card reveal" id="future-faculty">
+        <div class="news-detail-media"><img src="images/news/future-faculty.svg" alt="University of Maryland Future Faculty Fellow image placeholder"></div>
+        <div class="news-detail-copy"><span class="signal-kicker">Fellowship · University of Maryland · 2025–2027</span><h3>Future Faculty Fellow</h3><p>Awarded a UMD Future Faculty Fellowship for 2025–2027, a program that prepares doctoral researchers for academic careers.</p><div class="news-detail-links"><a href="https://eng.umd.edu/academics-students/current-students/future-faculty-program">Program ↗</a></div></div>
+      </article>
+      
+    
+      
+        </div></div>
+        <div class="news-year-group">
+          <div class="news-year"><h2>2024</h2></div>
+          <div class="news-detail-list">
+        
+      
+      <article class="news-detail-card reveal" id="icra40">
+        <div class="news-detail-media"><img src="images/research/codedvo_working.gif" alt="Animated CodedVO visual odometry result"></div>
+        <div class="news-detail-copy"><span class="signal-kicker">Conference presentation · ICRA40 · September 2024</span><h3>Presented CodedVO at ICRA40</h3><p>CodedVO was presented at the ICRA40 anniversary event in Rotterdam, highlighting coded-aperture visual odometry and metric scale recovery from monocular imagery.</p><div class="news-detail-links"><a href="https://prg.cs.umd.edu/CodedVO">Project ↗</a></div></div>
+      </article>
+      
+    
+      
+      <article class="news-detail-card reveal" id="codedvo-ral">
+        <div class="news-detail-media"><img src="images/research/codedvo_working.gif" alt="Animated CodedVO visual odometry result"></div>
+        <div class="news-detail-copy"><span class="signal-kicker">Paper accepted · IEEE RA-L · May 2024</span><h3>CodedVO accepted to IEEE RA-L</h3><p>CodedVO was accepted to IEEE Robotics and Automation Letters. The method uses a coded aperture to physically encode metric depth cues into images, resolving the scale ambiguity of monocular visual odometry.</p><div class="news-detail-links"><a href="https://ieeexplore.ieee.org/document/10564186">Paper ↗</a><a href="https://arxiv.org/abs/2407.18240">arXiv ↗</a><a href="https://prg.cs.umd.edu/CodedVO">Project ↗</a></div></div>
+      </article>
+      </div></div>
+    
+  </div>
+</section>
+
+</main>
+<footer class="footer"><div class="container footer-grid"><span>© <span id="year"></span> Naitri Rajyaguru</span><span>Robotics · Insect-Inspired AI · Computer Vision</span><a href="#top">Back to top ↑</a></div></footer>
+
+<script src="script.js"></script>
+</body>
+</html>

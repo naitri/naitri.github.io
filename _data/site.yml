@@ -1,0 +1,61 @@
+name: Naitri Rajyaguru
+initials: NR
+meta_description: Naitri Rajyaguru. Robotics, computer vision, and insect-inspired autonomy for resource-constrained robots.
+tagline: Insect-inspired AI for tiny robots.
+eyebrow: Robotics · Insect-Inspired AI · Computer Vision
+bio: >-
+  I am a Ph.D. candidate in Computer Science at the University of Maryland, advised by Prof. Yiannis Aloimonos.
+  A honeybee crosses miles of changing terrain, finds food, and returns home on roughly a million neurons.
+  I build insect-inspired AI on those terms: compact representations that keep only what a robot needs in order
+  to act, so palm-sized robots can navigate on the power, memory, and compute they actually carry.
+portrait: /images/naitri-portrait.jpg
+portrait_alt: Naitri Rajyaguru
+# Hero background clip. Self-hosted so the page does not depend on YouTube and
+# sets no third-party cookies. script.js only downloads it on wide screens with
+# motion enabled; everywhere else the poster still is shown instead.
+hero_video_mp4: /video/hero-flapper.mp4
+hero_poster: /images/hero-poster.jpg
+hero_video_alt: Simulated bee-eye view of flight through a meadow, and flapping-wing flight in the lab
+research_title: Smaller models for smaller robots.
+research_subtitle: One compact perception–memory–action loop.
+objective_image: /images/research/bee-crazyflie.png
+objective_image_alt: A honeybee and a palm-sized quadrotor rendered as one machine
+research_instructions: Hover a brain region to open a research pillar. Tap to pin.
+connectome_image: /images/research/connectome-cutout.png
+connectome_alt: Color-coded insect brain connectome with visual, memory, and central processing pathways
+links:
+  email: mailto:nrajyagu@umd.edu
+  cv: /data/Naitri_Rajyaguru_CV.pdf
+  scholar: https://scholar.google.com/citations?authuser=2&hl=en&user=ccttuecAAAAJ
+  github: https://github.com/naitri
+  linkedin: https://www.linkedin.com/in/naitri-rajyaguru/
+  x: https://x.com/naitri_r
+contact_title: Insect-inspired autonomy, Efficient AI, or Robot navigation
+footer_tagline: Robotics · Insect-Inspired AI · Computer Vision
+
+# ---------------------------------------------------------------------------
+# Section headings. These use the wording from the previous site so the
+# subsection titles stay recognisable. `eyebrow` is the small label above the
+# heading; `title` is the large serif heading.
+# ---------------------------------------------------------------------------
+sections:
+  research:
+    eyebrow: Research Objective
+  news:
+    eyebrow: News & media
+    title: News
+  publications:
+    eyebrow: Research output
+    title: Publications
+  experience:
+    eyebrow: Experience
+    title: Experience
+  projects:
+    eyebrow: Portfolio
+    title: Selected Projects
+  teaching:
+    eyebrow: University of Maryland
+    title: Teaching
+
+# Default colour scheme on a visitor's first visit: "system", "light" or "dark".
+default_theme: system

@@ -1,0 +1,16 @@
+<header class="site-header{% if page.header_light %} teaching-header{% endif %}" id="top">
+  <div class="nav-wrap">
+    <a class="brand" href="{{ '/' | relative_url }}" aria-label="{{ site.data.site.name }} home">{{ site.data.site.initials }}</a>
+    <nav class="nav" aria-label="Primary navigation">
+      <a href="{{ '/' | relative_url }}#research">Research</a>
+      <a href="{{ '/' | relative_url }}#publications">Publications</a>
+      <a{% if page.nav_active == 'news' %} class="active"{% endif %} href="{{ '/news.html' | relative_url }}">News</a>
+      <a href="{{ '/' | relative_url }}#experience">Experience</a>
+      <a{% if page.nav_active == 'teaching' %} class="active"{% endif %} href="{{ '/teaching.html' | relative_url }}">Teaching</a>
+    </nav>
+    <div class="nav-end">
+      {% include theme-toggle.html %}
+      <a class="nav-cta" href="{{ site.data.site.links.cv }}">CV ↗</a>
+    </div>
+  </div>
+</header>

@@ -1,0 +1,17 @@
+---
+title: Teaching | Naitri Rajyaguru
+description: Teaching by Naitri Rajyaguru at the University of Maryland.
+body_class: teaching-page
+header_light: true
+nav_active: teaching
+---
+<section class="teaching-hero"><div class="container teaching-hero-grid"><div><p class="eyebrow">University of Maryland</p><h1>Teaching</h1></div><div class="teaching-symbol" aria-hidden="true">∇<span>π</span></div></div></section>
+<section class="section teaching-list-section"><div class="container">
+  <div class="teaching-backlink"><a class="text-link dark-link" href="{{ '/' | relative_url }}">← Back to profile</a></div>
+  <div class="teaching-list">
+    {% assign courses = site.teaching | sort: 'order' %}
+    {% for course in courses %}
+    <article class="teaching-card"><div class="teaching-term">{{ course.term }}</div><div><h3>{{ course.title }}</h3>{{ course.content }}{% if course.url %}<a href="{{ course.url }}">Course page ↗</a>{% endif %}</div></article>
+    {% endfor %}
+  </div>
+</div></section>

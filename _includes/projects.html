@@ -1,0 +1,11 @@
+<section class="section projects-section" id="projects" aria-labelledby="projects-title">
+  <div class="container">
+    <div class="compact-heading reveal"><div><p class="eyebrow dark">{{ site.data.site.sections.projects.eyebrow }}</p><h2 id="projects-title">{{ site.data.site.sections.projects.title }}</h2></div><a class="text-link dark-link" href="{{ site.data.site.links.github }}">GitHub ↗</a></div>
+    <div class="project-grid">
+      {% assign projects = site.projects | sort: 'order' %}
+      {% for project in projects %}
+      <a class="project-card reveal" href="{{ project.url }}"><div class="project-symbol">{{ project.symbol }}{% if project.image %}<img src="{{ project.image }}" alt="{{ project.image_alt | default: project.title }}" loading="lazy">{% endif %}</div><div><span class="project-category">{{ project.category }}</span><h3>{{ project.title }}</h3><p>{{ project.summary }}</p></div></a>
+      {% endfor %}
+    </div>
+  </div>
+</section>

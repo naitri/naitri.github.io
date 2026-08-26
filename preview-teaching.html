@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#06101d">
+<script>
+/* Resolve the colour scheme before first paint so the page never flashes the wrong theme. */
+(function(){try{
+  var stored=localStorage.getItem('theme');
+  var preferred="system";
+  var mode=(stored==='light'||stored==='dark')?stored:preferred;
+  if(mode!=='light'&&mode!=='dark'){mode=window.matchMedia('(prefers-color-scheme: light)').matches?'light':'dark';}
+  document.documentElement.setAttribute('data-theme',mode);
+  document.documentElement.style.colorScheme=mode;
+  var m=document.querySelector('meta[name="theme-color"]');
+  if(m)m.setAttribute('content',mode==='dark'?'#06101d':'#f6f7f9');
+}catch(e){document.documentElement.setAttribute('data-theme','dark');}})();
+</script>
+<meta name="description" content="Teaching by Naitri Rajyaguru at the University of Maryland.">
+<title>Teaching | Naitri Rajyaguru</title>
+<link rel="icon" href="images/favicon/favicon.png" type="image/png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Source+Serif+4:opsz,wght@8..60,500;8..60,600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body class="teaching-page">
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header teaching-header" id="top">
+  <div class="nav-wrap">
+    <a class="brand" href="preview-local.html" aria-label="Naitri Rajyaguru home">NR</a>
+    <nav class="nav" aria-label="Primary navigation">
+      <a href="preview-local.html#research">Research</a>
+      <a href="preview-local.html#publications">Publications</a>
+      <a href="preview-news.html">News</a>
+      <a href="preview-local.html#experience">Experience</a>
+      <a class="active" href="preview-teaching.html">Teaching</a>
+    </nav>
+    <div class="nav-end">
+      <button class="theme-toggle" id="theme-toggle" type="button" role="switch" aria-checked="false" aria-label="Switch between dark and light mode" title="Switch between dark and light mode">
+  <span class="theme-toggle-track" aria-hidden="true">
+    <svg class="theme-icon theme-icon-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.4v2.3M12 19.3v2.3M4.2 12H1.9M22.1 12h-2.3M6.5 6.5 4.9 4.9M19.1 19.1l-1.6-1.6M17.5 6.5l1.6-1.6M4.9 19.1l1.6-1.6"/></svg>
+    <svg class="theme-icon theme-icon-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20.5 14.3A8.6 8.6 0 0 1 9.7 3.5a8.6 8.6 0 1 0 10.8 10.8Z"/></svg>
+    <span class="theme-toggle-thumb"></span>
+  </span>
+</button>
+
+      <a class="nav-cta" href="data/Naitri_Rajyaguru_CV.pdf">CV ↗</a>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+<section class="teaching-hero"><div class="container teaching-hero-grid"><div><p class="eyebrow">University of Maryland</p><h1>Teaching</h1></div><div class="teaching-symbol" aria-hidden="true">∇<span>π</span></div></div></section>
+<section class="section teaching-list-section"><div class="container">
+  <div class="teaching-backlink"><a class="text-link dark-link" href="preview-local.html">← Back to profile</a></div>
+  <div class="teaching-list">
+    
+    
+    <article class="teaching-card"><div class="teaching-term">Spring 2026</div><div><h3>CMSC 733 · Classical and Deep Learning Approaches for Geometric Computer Vision</h3><p>Teaching Assistant. Advanced graduate course on classical and deep learning approaches to geometric computer vision and computational photography. Taught by Prof. Yiannis Aloimonos.</p><a href="https://prg.cs.umd.edu/cmsc733-spring2026">Course page ↗</a></div></article>
+    
+    <article class="teaching-card"><div class="teaching-term">Fall 2025, Fall 2024</div><div><h3>CMSC 426 · Computer Vision</h3><p>Teaching Assistant. Introductory course on computer vision and computational photography that explores image formation, features, segmentation, stitching, recognition, motion estimation, and visual SLAM. Taught by Prof. Yiannis Aloimonos.</p><a href="https://prg.cs.umd.edu/cmsc426-fall2025">Course page ↗</a></div></article>
+    
+    <article class="teaching-card"><div class="teaching-term">Spring 2025</div><div><h3>CMSC 422 · Introduction to Machine Learning</h3><p>Teaching Assistant. Undergraduate course on supervised and unsupervised learning, model selection, and evaluation.</p></div></article>
+    
+    <article class="teaching-card"><div class="teaching-term">Spring 2023</div><div><h3>ENEE 408U · Unmanned Aerial Vehicles</h3><p>Teaching Assistant. Hands-on senior course on aerial robotics, covering flight platforms, onboard perception, estimation, and control.</p></div></article>
+    
+    <article class="teaching-card"><div class="teaching-term">Spring 2023</div><div><h3>INST 750 · Advanced Data Science</h3><p>Teaching Assistant. Graduate course on data science methods applied to large real-world datasets.</p></div></article>
+    
+    <article class="teaching-card"><div class="teaching-term">Spring 2022</div><div><h3>FIRE 198 · Autonomous Unmanned Systems</h3><p>Lead Peer Research Mentor. First-year research course on perception, planning, and control for autonomous unmanned systems.</p><a href="https://umdausfire.github.io/teaching/fire198/spring2022.html">Course page ↗</a></div></article>
+    
+    <article class="teaching-card"><div class="teaching-term">Fall 2021</div><div><h3>Introduction to Robot Modelling</h3><p>Robotics Tutor. Kinematics, dynamics, and modelling of robot manipulators.</p></div></article>
+    
+  </div>
+</div></section>
+
+</main>
+<footer class="footer"><div class="container footer-grid"><span>© <span id="year"></span> Naitri Rajyaguru</span><span>Robotics · Insect-Inspired AI · Computer Vision</span><a href="#top">Back to top ↑</a></div></footer>
+
+<script src="script.js"></script>
+</body>
+</html>

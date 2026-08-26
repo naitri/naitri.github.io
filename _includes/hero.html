@@ -1,0 +1,35 @@
+<section class="hero" aria-labelledby="hero-title">
+  <div class="hero-video" aria-hidden="true">
+    <video class="hero-video-el" id="hero-video" muted loop playsinline disablepictureinpicture
+           poster="{{ site.data.site.hero_poster | relative_url }}"
+           data-mp4="{{ site.data.site.hero_video_mp4 | relative_url }}"
+           tabindex="-1"></video>
+  </div>
+  <div class="hero-overlay" aria-hidden="true"></div>
+  <div class="container hero-grid">
+    <div class="hero-copy reveal">
+      <p class="eyebrow">{{ site.data.site.eyebrow }}</p>
+      <h1 id="hero-title">{{ site.data.site.name }}</h1>
+      <p class="hero-kicker">{{ site.data.site.tagline }}</p>
+      <p class="hero-body">{{ site.data.site.bio }}</p>
+      <div class="hero-links" aria-label="Profile links">
+        <a href="{{ site.data.site.links.email }}" aria-label="Email"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 5h18v14H3zM4 6l8 7 8-7"/></svg><span>Email</span></a>
+        <a href="{{ site.data.site.links.cv }}" aria-label="CV"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 2h9l4 4v16H6zM14 2v5h5M9 12h6M9 16h6"/></svg><span>CV</span></a>
+        <a href="{{ site.data.site.links.scholar }}" aria-label="Google Scholar"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2 9l10-6 10 6-10 6zM6 12v5c3 3 9 3 12 0v-5"/></svg><span>Scholar</span></a>
+        <a href="{{ site.data.site.links.github }}" aria-label="GitHub"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 19c-4 1-4-2-5-2m10 4v-3c0-1 .4-2 1-2-4 0-8-2-8-7 0-2 1-3 2-4 0-1 0-2 .2-3 0 0 2 0 4 2 1-.3 3-.3 4 0 2-2 4-2 4-2 .3 1 .3 2 .2 3 1 1 2 2 2 4 0 5-4 7-8 7 .6.5 1 1 1 2v3"/></svg><span>GitHub</span></a>
+        <a href="{{ site.data.site.links.linkedin }}" aria-label="LinkedIn"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 8v11M5 5v.1M10 19V8m0 5c0-3 6-4 6 0v6M16 13v-1"/></svg><span>LinkedIn</span></a>
+        <a href="{{ site.data.site.links.x }}" aria-label="X"><svg class="icon-solid" viewBox="0 0 24 24" aria-hidden="true"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg><span>X</span></a>
+      </div>
+    </div>
+    <div class="portrait-manifold reveal reveal-delay-1" aria-label="Portrait of {{ site.data.site.name }} emerging through a toroidal state manifold">
+      <canvas class="torus-math torus-math-back" id="torus-back-canvas" aria-hidden="true"></canvas>
+      <div class="portrait-glow" aria-hidden="true"></div>
+      <div class="portrait-shell">
+        <img class="hero-photo" src="{{ site.data.site.portrait }}" alt="{{ site.data.site.portrait_alt }}">
+        <span class="portrait-fallback" aria-hidden="true">{{ site.data.site.initials }}</span>
+      </div>
+      <canvas class="torus-math torus-math-front" id="torus-front-canvas" aria-hidden="true"></canvas>
+      <div class="manifold-notes" aria-hidden="true"><span>θ · state cycle</span><span>T² · latent manifold</span><span>φ · phase</span></div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,34 @@
+title: Naitri Rajyaguru | Robotics & Computer Vision
+description: Naitri Rajyaguru. Robotics, computer vision, and insect-inspired autonomy for resource-constrained robots.
+url: https://naitri.github.io
+baseurl: ""
+markdown: kramdown
+collections:
+  research:
+    output: false
+  publications:
+    output: false
+  news:
+    output: false
+  experience:
+    output: false
+  projects:
+    output: false
+  teaching:
+    output: false
+defaults:
+  - scope:
+      path: ""
+    values:
+      layout: default
+exclude:
+  - README.md
+  - EDITING.md
+  - UPLOAD-CHECKLIST.md
+  - templates
+  - tools
+  - preview-local.html
+  - preview-news.html
+  - preview-teaching.html
+  - Gemfile
+  - Gemfile.lock
