@@ -1,10 +1,10 @@
 name: Naitri Rajyaguru
 initials: NR
-meta_description: Naitri Rajyaguru builds insect-inspired AI for tiny robots. Ph.D. candidate in Computer Science at the University of Maryland, working on minimal perception, robot navigation, and computer vision for resource-constrained aerial robots.
+meta_description: Naitri Rajyaguru builds insect-inspired AI for tiny robots. Ph.D. student in Computer Science at the University of Maryland, working on minimal perception, robot navigation, and computer vision for resource-constrained aerial robots.
 tagline: Insect-inspired AI for tiny robots.
 eyebrow: Robotics · Insect-Inspired AI · Computer Vision
 bio: >-
-  I am a Ph.D. candidate in Computer Science at the University of Maryland, advised by Prof. Yiannis Aloimonos.
+  I am a Ph.D. student in Computer Science at the University of Maryland, advised by Prof. Yiannis Aloimonos.
   A honeybee crosses miles of changing terrain, finds food, and returns home on roughly a million neurons.
   I build insect-inspired AI on those terms: compact representations that keep only what a robot needs in order
   to act, so palm-sized robots can navigate on the power, memory, and compute they actually carry.
