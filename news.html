@@ -25,8 +25,8 @@ nav_active: news
           <div class="news-detail-list">
         {% assign current_year = item.year %}
       {% endif %}
-      <article class="news-detail-card reveal" id="{{ item.anchor }}">
-        <div class="news-detail-media"><img src="{{ item.image }}" alt="{{ item.image_alt }}"></div>
+      <article class="news-detail-card reveal{% unless item.image %} no-media{% endunless %}" id="{{ item.anchor }}">
+        {% if item.image %}<div class="news-detail-media"><img src="{{ item.image }}" alt="{{ item.image_alt }}"></div>{% endif %}
         <div class="news-detail-copy"><span class="signal-kicker">{{ item.detail_kicker | default: item.kicker }}</span><h3>{{ item.title }}</h3>{{ item.content }}{% if item.links %}<div class="news-detail-links">{% for link in item.links %}<a href="{{ link.url }}">{{ link.label }} ↗</a>{% endfor %}</div>{% endif %}</div>
       </article>
       {% if forloop.last %}</div></div>{% endif %}

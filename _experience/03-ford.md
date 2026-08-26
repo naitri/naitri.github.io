@@ -9,5 +9,5 @@ logo_alt: Ford logo
 logo_wide: true
 fallback: FORD
 detail_label: Ford
-detail: pseudo-object removal, semantic/depth inpainting, HD map generation, and localization.
+detail: Pseudo-object removal, semantic/depth inpainting, HD map generation, and localization.
 ---

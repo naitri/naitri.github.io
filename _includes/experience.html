@@ -4,11 +4,8 @@
     <div class="experience-icons">
       {% assign experiences = site.experience | sort: 'order' %}
       {% for exp in experiences %}
-      <article class="experience-icon-card reveal{% cycle '', ' reveal-delay-1', ' reveal-delay-2' %}"><div class="experience-logo{% if exp.logo_wide %} logo-wide{% endif %}" data-fallback="{{ exp.fallback }}"><img class="logo-light{% if exp.logo_dark %} has-dark{% endif %}" src="{{ exp.logo }}" alt="{{ exp.logo_alt }}">{% if exp.logo_dark %}<img class="logo-dark" src="{{ exp.logo_dark }}" alt="{{ exp.logo_alt }}">{% endif %}</div><h3>{{ exp.role }}</h3><p>{{ exp.organization }}</p><span>{{ exp.dates }}{% if exp.note %} · {{ exp.note }}{% endif %}</span></article>
+      <article class="experience-icon-card reveal{% cycle '', ' reveal-delay-1', ' reveal-delay-2' %}"><div class="experience-logo{% if exp.logo_wide %} logo-wide{% endif %}" data-fallback="{{ exp.fallback }}"><img class="logo-light{% if exp.logo_dark %} has-dark{% endif %}" src="{{ exp.logo }}" alt="{{ exp.logo_alt }}">{% if exp.logo_dark %}<img class="logo-dark" src="{{ exp.logo_dark }}" alt="{{ exp.logo_alt }}">{% endif %}</div><h3>{{ exp.role }}</h3><p>{{ exp.organization }}</p><span>{{ exp.dates }}{% if exp.note %} · {{ exp.note }}{% endif %}</span>{% if exp.detail %}<p class="experience-detail">{{ exp.detail }}</p>{% endif %}</article>
       {% endfor %}
-    </div>
-    <div class="experience-detail-grid reveal">
-      {% for exp in experiences %}{% if exp.detail %}<p><strong>{{ exp.detail_label | default: exp.organization }}</strong>. {{ exp.detail }}</p>{% endif %}{% endfor %}
     </div>
   </div>
 </section>

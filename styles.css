@@ -999,3 +999,27 @@ body{overflow-x:clip;max-width:100vw}
 .news-track.is-dragging{cursor:grabbing}
 .news-track.is-dragging .news-card{pointer-events:none}
 @media(prefers-reduced-motion:reduce){.news-track{will-change:auto}}
+
+/* ==========================================================================
+   Experience: each role's description sits in its own card
+   --------------------------------------------------------------------------
+   The descriptions used to be a separate grid under the cards. Only four of
+   six roles have one, so that row always left an orphan, and each paragraph
+   needed a "Zupt." prefix to say which card it belonged to. In the card the
+   prefix is redundant and nothing orphans.
+   ========================================================================== */
+.experience-detail{
+  margin:12px 0 0;padding:11px 0 0;border-top:1px solid var(--line);
+  font-size:12.5px;line-height:1.55;color:var(--muted);
+  font-weight:400;          /* the card's <p> rule sets 600 for the organisation */
+}
+.experience-icon-card{display:flex;flex-direction:column}
+.experience-icon-card .experience-detail{margin-top:auto}
+@media(max-width:700px){.experience-detail{font-size:12px}}
+
+/* A news entry may carry no photo. Collapse the media row rather than leaving
+   an empty band where the image would have been. */
+.news-card.no-media{grid-template-rows:1fr}
+.news-card.no-media .news-copy{display:flex;flex-direction:column;justify-content:center;padding:18px 16px}
+.news-detail-card.no-media{grid-template-columns:1fr}
+.news-detail-card.no-media .news-detail-copy{padding:10px 12px}

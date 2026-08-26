@@ -8,5 +8,5 @@ logo_alt: Swaayatt Robots logo
 logo_wide: false
 fallback: SR
 detail_label: Swaayatt
-detail: visual/LiDAR odometry, LOAM, localization, and sensor fusion for autonomous driving.
+detail: Visual/LiDAR odometry, LOAM, localization, and sensor fusion for autonomous driving.
 ---

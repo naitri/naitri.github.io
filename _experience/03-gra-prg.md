@@ -8,5 +8,5 @@ logo_alt: University of Maryland logo
 logo_wide: false
 fallback: PRG
 detail_label: PRG
-detail: drone navigation in unknown environments using aleatoric uncertainty in optical flow, published in Science Robotics, plus 3D vision and active perception.
+detail: Drone navigation in unknown environments using aleatoric uncertainty in optical flow, published in Science Robotics, plus 3D vision and active perception.
 ---

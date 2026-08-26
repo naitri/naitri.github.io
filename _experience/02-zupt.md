@@ -8,5 +8,5 @@ logo_alt: Zupt logo
 logo_wide: true
 fallback: ZUPT
 detail_label: Zupt
-detail: underwater object pose estimation, Sim2Real Blender environments, and dynamic LiDAR simulation.
+detail: Underwater object pose estimation, Sim2Real Blender environments, and dynamic LiDAR simulation.
 ---

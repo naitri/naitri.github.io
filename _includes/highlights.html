@@ -8,8 +8,8 @@
       <div class="news-track">
       {% assign news_items = site.news | sort: 'order' %}
       {% for item in news_items limit:6 %}
-      <a class="news-card reveal{% cycle '', ' reveal-delay-1', ' reveal-delay-2' %}" href="{{ '/news.html' | relative_url }}#{{ item.anchor }}">
-        <div class="news-image"><img src="{{ item.image }}" alt="{{ item.image_alt }}"></div>
+      <a class="news-card reveal{% unless item.image %} no-media{% endunless %}{% cycle '', ' reveal-delay-1', ' reveal-delay-2' %}" href="{{ '/news.html' | relative_url }}#{{ item.anchor }}">
+        {% if item.image %}<div class="news-image"><img src="{{ item.image }}" alt="{{ item.image_alt }}"></div>{% endif %}
         <div class="news-copy"><span class="signal-kicker">{{ item.kicker }}</span><h3>{{ item.home_title | default: item.title }}</h3><p>{{ item.home_summary }}</p></div>
       </a>
       {% endfor %}
