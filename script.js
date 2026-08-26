@@ -328,69 +328,130 @@ document.querySelectorAll('.experience-logo img').forEach((img) => {
 });
 
 
-// Homepage news strip: a very slow drift that reverses at each end. It stops on
-// hover, focus, touch, or manual scrolling, and while the strip is off screen.
+// Homepage news strip. The drift is applied as a transform rather than by
+// setting scrollLeft, because scroll offsets are whole pixels and a 9px/s crawl
+// therefore advanced in visible 1px steps. Transforms interpolate sub-pixel and
+// stay on the compositor, so the same speed is smooth. Losing the native
+// scroller costs us swipe and wheel, which are re-added below.
 (() => {
-  const strip = document.getElementById('news-strip');
-  if (!strip || reduceMotion) return;
+  const viewport = document.getElementById('news-strip');
+  const track = viewport && viewport.querySelector('.news-track');
+  if (!viewport || !track) return;
 
-  const SPEED = 9;                 // px per second
-  let direction = 1, paused = false, onScreen = false, last = 0, raf = 0;
-  // scrollLeft floors to whole pixels, so a 0.45px step would be thrown away on
-  // every frame. Keep the true position here and write the accumulated value.
-  let pos = strip.scrollLeft;
+  const SPEED = 9;                      // px per second
+  let offset = 0, direction = 1, paused = false, onScreen = false;
+  let last = 0, raf = 0, resume = 0;
+  let dragging = false, dragged = 0, startX = 0, startOffset = 0;
+
+  const limit = () => Math.max(0, track.scrollWidth - viewport.clientWidth);
+  const clamp = (v) => Math.min(Math.max(v, 0), limit());
+  const paint = () => { track.style.transform = `translate3d(${-offset}px,0,0)`; };
+
+  const hold = () => { paused = true; clearTimeout(resume); };
+  const releaseSoon = (ms = 2500) => {
+    clearTimeout(resume);
+    resume = setTimeout(() => { paused = false; last = 0; }, ms);
+  };
 
   const step = (now) => {
     if (!last) last = now;
     const dt = Math.min((now - last) / 1000, .05);
     last = now;
-    if (!paused && onScreen) {
-      const max = strip.scrollWidth - strip.clientWidth;
+    if (!paused && !dragging && onScreen) {
+      const max = limit();
       if (max > 4) {
-        pos += direction * SPEED * dt;
-        if (pos >= max) { pos = max; direction = -1; }
-        else if (pos <= 0) { pos = 0; direction = 1; }
-        strip.scrollLeft = pos;
+        offset += direction * SPEED * dt;
+        if (offset >= max) { offset = max; direction = -1; }
+        else if (offset <= 0) { offset = 0; direction = 1; }
+        paint();
       }
     }
     raf = requestAnimationFrame(step);
   };
 
-  const hold = () => { paused = true; };
-  const release = () => { pos = strip.scrollLeft; last = 0; paused = false; };
-  ['pointerenter', 'pointerdown', 'focusin', 'touchstart'].forEach((e) =>
-    strip.addEventListener(e, hold, { passive: true }));
-  ['pointerleave', 'focusout', 'touchend', 'touchcancel'].forEach((e) =>
-    strip.addEventListener(e, release, { passive: true }));
+  // Glide to a target instead of jumping, for the arrow buttons and keyboard.
+  let glide = 0;
+  const glideTo = (target) => {
+    cancelAnimationFrame(glide);
+    const from = offset, to = clamp(target), t0 = performance.now(), ms = 420;
+    if (reduceMotion) { offset = to; paint(); return; }
+    const tick = (now) => {
+      const k = Math.min((now - t0) / ms, 1);
+      const e = k < .5 ? 4 * k * k * k : 1 - Math.pow(-2 * k + 2, 3) / 2;   // ease-in-out
+      offset = from + (to - from) * e;
+      paint();
+      if (k < 1) glide = requestAnimationFrame(tick);
+    };
+    glide = requestAnimationFrame(tick);
+  };
+  const cardStep = () => {
+    const card = track.querySelector('.news-card');
+    return (card ? card.getBoundingClientRect().width : 264) + 10;
+  };
 
-  // A manual scroll or an arrow-button click hands control back to the reader
-  // for a while, instead of fighting them for the scroll position.
-  let idle = 0;
-  strip.addEventListener('wheel', () => {
-    paused = true; clearTimeout(idle); idle = setTimeout(release, 2500);
-  }, { passive: true });
+  // Pointer drag stands in for the native scroll the transform displaced.
+  viewport.addEventListener('pointerdown', (e) => {
+    if (e.button !== 0 && e.pointerType === 'mouse') return;
+    dragging = true; dragged = 0; startX = e.clientX; startOffset = offset;
+    hold();
+    track.classList.add('is-dragging');
+    try { viewport.setPointerCapture(e.pointerId); } catch (err) { /* ignore */ }
+  });
+  viewport.addEventListener('pointermove', (e) => {
+    if (!dragging) return;
+    const dx = e.clientX - startX;
+    dragged = Math.max(dragged, Math.abs(dx));
+    offset = clamp(startOffset - dx);
+    paint();
+  });
+  const endDrag = () => {
+    if (!dragging) return;
+    dragging = false; last = 0;
+    track.classList.remove('is-dragging');
+    releaseSoon();
+  };
+  ['pointerup', 'pointercancel', 'pointerleave'].forEach((e) =>
+    viewport.addEventListener(e, endDrag));
+  // A drag that moved should not also open the card it started on.
+  viewport.addEventListener('click', (e) => {
+    if (dragged > 6) { e.preventDefault(); e.stopPropagation(); }
+    dragged = 0;
+  }, true);
+
+  viewport.addEventListener('wheel', (e) => {
+    const dx = Math.abs(e.deltaX) > Math.abs(e.deltaY) ? e.deltaX : 0;
+    if (!dx) return;
+    e.preventDefault();
+    offset = clamp(offset + dx);
+    paint(); hold(); releaseSoon();
+  }, { passive: false });
+
+  viewport.addEventListener('keydown', (e) => {
+    if (e.key !== 'ArrowRight' && e.key !== 'ArrowLeft') return;
+    e.preventDefault();
+    glideTo(offset + (e.key === 'ArrowRight' ? cardStep() : -cardStep()));
+    hold(); releaseSoon(4000);
+  });
+
+  ['pointerenter', 'focusin'].forEach((e) => viewport.addEventListener(e, hold, { passive: true }));
+  viewport.addEventListener('pointerleave', () => releaseSoon(600), { passive: true });
+  viewport.addEventListener('focusout', () => releaseSoon(600), { passive: true });
+
   document.querySelectorAll('[data-news-scroll]').forEach((b) => b.addEventListener('click', () => {
-    paused = true; clearTimeout(idle); idle = setTimeout(release, 2500);
+    glideTo(offset + (b.dataset.newsScroll === 'next' ? cardStep() : -cardStep()));
+    hold(); releaseSoon(4000);
   }));
 
+  window.addEventListener('resize', () => { offset = clamp(offset); paint(); }, { passive: true });
+
   if ('IntersectionObserver' in window) {
-    new IntersectionObserver((entries) => { onScreen = entries.some((e) => e.isIntersecting); },
-      { threshold: .15 }).observe(strip);
+    new IntersectionObserver((entries) => { onScreen = entries.some((x) => x.isIntersecting); },
+      { threshold: .15 }).observe(viewport);
   } else { onScreen = true; }
 
-  raf = requestAnimationFrame(step);
+  paint();
+  if (!reduceMotion) raf = requestAnimationFrame(step);
 })();
-
-// Homepage news strip controls. The strip remains swipe/trackpad scrollable without JavaScript.
-const newsStrip = document.getElementById('news-strip');
-document.querySelectorAll('[data-news-scroll]').forEach((button) => {
-  button.addEventListener('click', () => {
-    if (!newsStrip) return;
-    const card = newsStrip.querySelector('.news-card');
-    const distance = (card?.getBoundingClientRect().width || 276) + 12;
-    newsStrip.scrollBy({ left: button.dataset.newsScroll === 'next' ? distance : -distance, behavior: reduceMotion ? 'auto' : 'smooth' });
-  });
-});
 
 // Mathematical torus around the portrait: a projected parametric surface, split into
 // back/front layers so the portrait genuinely intersects the manifold.

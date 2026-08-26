@@ -979,3 +979,23 @@ body{overflow-x:clip;max-width:100vw}
    Snapping is not needed now that there are arrow buttons and a free swipe. */
 .news-grid{scroll-behavior:auto;scroll-snap-type:none}
 .news-card{scroll-snap-align:none}
+
+/* ==========================================================================
+   News strip: transform-driven drift
+   --------------------------------------------------------------------------
+   scrollLeft is quantised to whole pixels, so at 9px/s the strip advanced in
+   1px jerks about nine times a second, which reads as jitter. A transform on
+   an inner track is sub-pixel and composited, so the same slow speed is
+   continuous. The viewport keeps the clipping; the track carries the motion,
+   and pointer drag replaces the native scroll it displaces.
+   ========================================================================== */
+.news-grid{display:block;overflow:hidden;padding:1px 1px 7px;scrollbar-width:none}
+.news-grid::-webkit-scrollbar{display:none}
+.news-track{
+  display:flex;gap:10px;will-change:transform;
+  touch-action:pan-y;                 /* horizontal is ours, vertical is the page's */
+  cursor:grab;
+}
+.news-track.is-dragging{cursor:grabbing}
+.news-track.is-dragging .news-card{pointer-events:none}
+@media(prefers-reduced-motion:reduce){.news-track{will-change:auto}}
