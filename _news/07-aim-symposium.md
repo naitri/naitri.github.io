@@ -1,5 +1,5 @@
 ---
-order: 6
+order: 7
 year: 2026
 anchor: aim-symposium
 kicker: Poster · AIM Symposium

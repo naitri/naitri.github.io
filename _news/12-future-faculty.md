@@ -1,5 +1,5 @@
 ---
-order: 11
+order: 12
 year: 2025
 anchor: future-faculty
 kicker: Fellowship · UMD

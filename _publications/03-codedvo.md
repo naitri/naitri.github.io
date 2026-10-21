@@ -1,5 +1,5 @@
 ---
-order: 2
+order: 3
 short_name: CodedVO
 title: "CodedVO: Coded Visual Odometry"
 project_url: https://prg.cs.umd.edu/CodedVO

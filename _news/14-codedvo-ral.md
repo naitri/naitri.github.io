@@ -1,5 +1,5 @@
 ---
-order: 13
+order: 14
 year: 2024
 anchor: codedvo-ral
 kicker: Paper accepted · IEEE RA-L

@@ -1,5 +1,5 @@
 ---
-order: 9
+order: 10
 year: 2026
 anchor: princeton-symposium
 kicker: Poster · Princeton Robotics

@@ -1,5 +1,5 @@
 ---
-order: 2
+order: 3
 year: 2026
 anchor: telluride
 kicker: Research talk · Telluride

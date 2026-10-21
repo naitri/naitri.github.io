@@ -1,5 +1,5 @@
 ---
-order: 10
+order: 11
 year: 2025
 anchor: ai-demo-day
 kicker: Research showcase · UMD

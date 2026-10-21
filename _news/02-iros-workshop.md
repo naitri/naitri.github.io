@@ -1,5 +1,5 @@
 ---
-order: 1
+order: 2
 year: 2026
 anchor: iros-insect-workshop
 kicker: Workshop · IROS 2026

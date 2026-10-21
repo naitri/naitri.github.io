@@ -1,5 +1,5 @@
 ---
-order: 3
+order: 4
 year: 2026
 anchor: cgtn
 kicker: Featured · CGTN America

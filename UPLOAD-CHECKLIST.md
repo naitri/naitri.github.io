@@ -14,8 +14,8 @@ Every other card uses a real photo. The exceptions:
 
 | Card | File today | Then edit |
 |---|---|---|
-| Future Faculty Fellow | `images/news/future-faculty.svg` (placeholder: "Replace with a preferred UMD / program photo") | `_news/11-future-faculty.md` |
-| AIM Symposium | `images/news/aim-symposium.svg` (placeholder: "Replace with a photo from the poster session") | `_news/06-aim-symposium.md` |
+| Future Faculty Fellow | `images/news/future-faculty.svg` (placeholder: "Replace with a preferred UMD / program photo") | `_news/12-future-faculty.md` |
+| AIM Symposium | `images/news/aim-symposium.svg` (placeholder: "Replace with a photo from the poster session") | `_news/07-aim-symposium.md` |
 
 To fix either: drop a JPG into `images/news/`, then change the one `image:` line,
 e.g.
@@ -54,13 +54,13 @@ Two caveats worth reading:
   the Sun's own social post describes the tiny-drone work. But the article is
   paywalled, so I could not confirm it names you. Swap the link if it is the
   wrong piece.
-- **IROS 2026 workshop.** Added as `_news/01-iros-workshop.md`, using the banner
+- **IROS 2026 workshop.** Added as `_news/02-iros-workshop.md`, using the banner
   from [insect-autonomy.github.io](https://insect-autonomy.github.io/) as the card
   image. Dated **1 October 2026, Pittsburgh** from that site. One thing to check:
   the workshop page currently names only **Chahat Singh and Kaushik Jayaram**
   under "Correspondence" and has no organizers section, so your name is not
   visible there. Worth asking them to list the full organizing committee.
-- **AIM symposium.** Added at your request as `_news/06-aim-symposium.md`, dated
+- **AIM symposium.** Added at your request as `_news/07-aim-symposium.md`, dated
   **5 May 2026** from [Maryland Today](https://today.umd.edu/briefs/inaugural-aim-symposium-highlights-ai-research-and-learning-innovation-at-umd).
   It needs a photo — see section 1.
 - **Two dates I still cannot source:** which day you spoke at Telluride (the

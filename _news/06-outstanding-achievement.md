@@ -1,5 +1,5 @@
 ---
-order: 5
+order: 6
 year: 2026
 anchor: outstanding-achievement
 kicker: Award · UMD Computer Science

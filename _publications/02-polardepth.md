@@ -1,5 +1,5 @@
 ---
-order: 1
+order: 2
 short_name: PolarDepth
 title: "PolarDepth: Polarization-Guided Monocular Depth for Visual Odometry"
 project_url: https://prg.cs.umd.edu/PolarDepth

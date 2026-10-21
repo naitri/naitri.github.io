@@ -1,5 +1,5 @@
 ---
-order: 4
+order: 5
 year: 2026
 anchor: polardepth
 kicker: Paper accepted · IEEE RA-L
